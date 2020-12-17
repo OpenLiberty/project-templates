@@ -1,0 +1,27 @@
+<server description="Simple Microservice">
+
+  <featureManager>
+    <feature>jakartaee-8.0</feature>
+    <feature>mpHealth-2.2</feature>
+  </featureManager>
+
+  <variable name="default.http.port" defaultValue="9080"/>
+  <variable name="default.https.port" defaultValue="9443"/>
+  <variable name="project.name" defaultValue="rest-service"/>
+
+  <httpEndpoint id="defaultHttpEndpoint"
+    httpPort="${default.http.port}"
+    httpsPort="${default.https.port}"
+    host="*" />
+
+  <webApplication location="${project.name}.war" contextRoot="/"/>
+
+  <applicationManager autoExpand="true"/>
+
+  <basicRegistry id="basic" realm="BasicRealm"> 
+      <!-- <user name="yourUserName" password="" />  --> 
+  </basicRegistry>
+
+  <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
+  
+</server>
