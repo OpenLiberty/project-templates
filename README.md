@@ -8,5 +8,5 @@ This repository contains starter project templates that you can use to build clo
  - maven
     - This project template contains the core set of files to build applications with Open Liberty using Apache Maven as the build tool.
   - simple-rest-app	
-    - This project template contains the core set of files to build applications with Open Liberty using Gradle or Maven with a simple REST endpoint included.
+    - This project template contains the core set of files to build applications with Open Liberty using Gradle or Maven and has a simple REST endpoint included.
     - The sample REST endpoint can be reached at http://localhost:9080/api/resource/greeting.
