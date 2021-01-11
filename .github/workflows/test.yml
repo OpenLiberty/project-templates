@@ -41,8 +41,7 @@ jobs:
            gradle -version
            gradle tasks
            gradle clean
-           cat ./build.gradle
-           gradle build -b ./build.gradle -x openBrowser -i
+           gradle libertyStart
            curl http://localhost:9080/myApp/api/resource/greeting
            gradle libertyStop
            cd ..
