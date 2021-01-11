@@ -1,0 +1,63 @@
+name: Test templates
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  java8build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 8
+    - run: unset _JAVA_OPTIONS
+    - name: Test simple-rest-app template
+      run: |
+           cd simple-rest-app
+           mvn -q clean package
+           mvn -q liberty:create liberty:install-feature liberty:deploy
+           mvn liberty:start
+           mvn failsafe:integration-test liberty:stop
+           mvn failsafe:verify
+           cd ..
+    - name: Test maven template
+      run: |
+           cp -R simple-rest-app/src/main/java/com/demo/rest/RestResource.java maven/src/main/java/com/demo/rest/RestResource.java
+           cp -R simple-rest-app/src/test/java/com/demo/rest/test/RestEndpointIT.java maven/src/test/java/com/demo/rest/test/RestEndpointIT.java
+           cd maven
+           mvn -q clean package
+           mvn -q liberty:create liberty:install-feature liberty:deploy
+           mvn liberty:start
+           mvn failsafe:integration-test liberty:stop
+           mvn failsafe:verify
+           cd ..
+    - name: Test gradle template
+      run: |
+           cp -R simple-rest-app/src/main/java/com/demo/rest/RestResource.java gradle/src/main/java/com/demo/rest/RestResource.java
+           cp -R simple-rest-app/src/test/java/com/demo/rest/test/RestEndpointIT.java gradle/src/test/java/com/demo/rest/test/RestEndpointIT.java
+           cd gradle
+           gradle -version
+           gradle tasks
+           gradle clean
+           cat ./build.gradle
+           gradle build -b ./build.gradle -x openBrowser -i
+           gradle libertyStop
+           cd ..
+    - name: Post tests
+      if: always()
+      run: |
+          logsPath=$(sudo find . -name "messages.log");
+          sudo cat $logsPath | sudo grep product
+          sudo cat $logsPath | sudo grep java
+    - name: Archive server logs if failed
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: server-logs
+        path: |
+              simple-rest-app/target/liberty/wlp/usr/servers/defaultServer/logs/
+              maven/target/liberty/wlp/usr/servers/defaultServer/logs/
+              gradle/build/wlp/usr/servers/defaultServer/logs
