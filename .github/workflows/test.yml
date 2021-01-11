@@ -26,6 +26,7 @@ jobs:
     - name: Test maven template
       run: |
            cp -R simple-rest-app/src/main/java/com/demo/rest/RestResource.java maven/src/main/java/com/demo/rest/RestResource.java
+           mkdir -p maven/src/test/java/com/demo/rest/test
            cp -R simple-rest-app/src/test/java/com/demo/rest/test/RestEndpointIT.java maven/src/test/java/com/demo/rest/test/RestEndpointIT.java
            cd maven
            mvn -q clean package
@@ -37,6 +38,7 @@ jobs:
     - name: Test gradle template
       run: |
            cp -R simple-rest-app/src/main/java/com/demo/rest/RestResource.java gradle/src/main/java/com/demo/rest/RestResource.java
+           mkdir -p gradle/src/test/java/com/demo/rest/test
            cp -R simple-rest-app/src/test/java/com/demo/rest/test/RestEndpointIT.java gradle/src/test/java/com/demo/rest/test/RestEndpointIT.java
            cd gradle
            gradle -version
