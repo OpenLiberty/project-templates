@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   schedule:
     # 11 AM UTC or 6 AM EST
-    - cron: 0 11 * * *
+    - cron: 0 11 25 * *
 jobs:
   java8build:
     runs-on: ubuntu-latest
