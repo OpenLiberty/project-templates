@@ -7,6 +7,7 @@ on:
   schedule:
     # run test at 11 AM UTC or 6 AM EST on the 25th of each month for monthly OL
     - cron: 0 11 25 * *
+
 jobs:
   java8build:
     runs-on: ubuntu-latest
