@@ -8,7 +8,8 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-// configure liberty-gradle-plugin
+// remove this line
+// configure liberty-gradle-plugin 
 buildscript {
     repositories {
         mavenCentral()
