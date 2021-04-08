@@ -2,7 +2,7 @@
 
   <featureManager>
     <feature>jakartaee-8.0</feature>
-    <feature>mpHealth-2.2</feature>
+    <feature>mpHealth-3.0</feature>
   </featureManager>
 
   <variable name="default.http.port" defaultValue="9080"/>
