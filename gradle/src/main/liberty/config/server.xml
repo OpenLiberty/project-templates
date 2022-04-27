@@ -3,7 +3,7 @@
 
     <!-- Enable features -->
     <featureManager>
-        <feature>jakartaee-8.0</feature>
+        <feature>jakartaee-9.1</feature>
     </featureManager>
 
     <variable name="default.http.port" defaultValue="9080"/>
