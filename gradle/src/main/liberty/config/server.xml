@@ -16,7 +16,7 @@
 
     <applicationManager autoExpand="true"/>
 
-    <webApplication location="${project.name}.war" contextRoot="/"/>
+    <webApplication location="myApp.war" contextRoot="/"/>
 
     <basicRegistry id="basic" realm="BasicRealm">
         <!-- <user name="yourUserName" password="" />  -->
