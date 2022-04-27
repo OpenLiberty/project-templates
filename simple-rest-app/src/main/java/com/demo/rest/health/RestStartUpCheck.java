@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2022 IBM Corporation and others.
+ * Copyright (c) 2022 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,18 +12,19 @@
 package com.demo.rest.health;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import org.eclipse.microprofile.health.Liveness;
+
+import org.eclipse.microprofile.health.Startup;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 
-@Liveness
+@Startup
 @ApplicationScoped
-public class RestLivenessCheck implements HealthCheck {
+public class RestStartUpCheck implements HealthCheck {
 
   @Override
   public HealthCheckResponse call() {
 
-    // if not live logic
+    // if not ready logic
     // return HealthCheckResponse.down(this.getClass().getSimpleName());
     return HealthCheckResponse
             .up(this.getClass().getSimpleName());

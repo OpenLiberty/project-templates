@@ -25,8 +25,18 @@ jobs:
            mvn -q liberty:create liberty:install-feature liberty:deploy
            mvn liberty:start
            curl http://localhost:9080/api/resource/greeting
+           curl http://localhost:9080/health
            mvn failsafe:integration-test liberty:stop
            mvn failsafe:verify
+           docker build -t simple-rest-app:1.0-SNAPSHOT .
+           docker run -d --name simple-rest-app -p 9080:9080 simple-rest-app:1.0-SNAPSHOT
+           sleep 10
+           docker exec simple-rest-app cat /logs/messages.log | grep product
+           docker exec simple-rest-app cat /logs/messages.log | grep java
+           curl http://localhost:9080/api/resource/greeting
+           curl http://localhost:9080/health
+           docker stop simple-rest-app
+           docker rm simple-rest-app
            cd ..
     - name: Test maven template
       run: |
@@ -35,8 +45,16 @@ jobs:
            mvn -q clean package
            mvn -q liberty:create liberty:install-feature liberty:deploy
            mvn liberty:start
-           curl http://localhost:9080/myApp/api/resource/greeting
+           curl http://localhost:9080/api/resource/greeting
            mvn liberty:stop
+           docker build -t my-app:1.0-SNAPSHOT .
+           docker run -d --name my-app -p 9080:9080 my-app:1.0-SNAPSHOT
+           sleep 10
+           docker exec my-app cat /logs/messages.log | grep product
+           docker exec my-app cat /logs/messages.log | grep java
+           curl http://localhost:9080/api/resource/greeting
+           docker stop my-app
+           docker rm my-app
            cd ..
     - name: Test gradle template
       run: |
@@ -46,8 +64,17 @@ jobs:
            gradle tasks
            gradle clean
            gradle libertyStart
-           curl http://localhost:9080/myApp/api/resource/greeting
+           curl http://localhost:9080/api/resource/greeting
            gradle libertyStop
+           gradle libertyPackage
+           docker build -t my-app:1.0-SNAPSHOT .
+           docker run -d --name my-app -p 9080:9080 my-app:1.0-SNAPSHOT
+           sleep 10
+           docker exec my-app cat /logs/messages.log | grep product
+           docker exec my-app cat /logs/messages.log | grep java
+           curl http://localhost:9080/api/resource/greeting
+           docker stop my-app
+           docker rm my-app
            cd ..
     - name: Post tests
       if: always()
