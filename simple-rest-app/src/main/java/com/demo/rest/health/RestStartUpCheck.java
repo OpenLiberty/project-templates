@@ -19,7 +19,7 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 
 @Startup
 @ApplicationScoped
-public class RestReadinessCheck implements HealthCheck {
+public class RestStartUpCheck implements HealthCheck {
 
   @Override
   public HealthCheckResponse call() {
