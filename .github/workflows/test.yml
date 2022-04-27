@@ -48,7 +48,7 @@ jobs:
            curl http://localhost:9080/myApp/api/resource/greeting
            mvn liberty:stop
            docker build -t my-app:1.0-SNAPSHOT .
-           docker run -d --name my-app -p 9080:9080 myApp:1.0-SNAPSHOT
+           docker run -d --name my-app -p 9080:9080 my-app:1.0-SNAPSHOT
            sleep 10
            docker exec my-app cat /logs/messages.log | grep product
            docker exec my-app cat /logs/messages.log | grep java
