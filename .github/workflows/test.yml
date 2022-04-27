@@ -47,14 +47,14 @@ jobs:
            mvn liberty:start
            curl http://localhost:9080/myApp/api/resource/greeting
            mvn liberty:stop
-           docker build -t myApp:1.0-SNAPSHOT .
-           docker run -d --name myApp -p 9080:9080 myApp:1.0-SNAPSHOT
+           docker build -t my-app:1.0-SNAPSHOT .
+           docker run -d --name my-app -p 9080:9080 myApp:1.0-SNAPSHOT
            sleep 10
-           docker exec myApp cat /logs/messages.log | grep product
-           docker exec myApp cat /logs/messages.log | grep java
+           docker exec my-app cat /logs/messages.log | grep product
+           docker exec my-app cat /logs/messages.log | grep java
            curl http://localhost:9080/myApp/api/resource/greeting
-           docker stop myApp
-           docker rm myApp
+           docker stop my-app
+           docker rm my-app
            cd ..
     - name: Test gradle template
       run: |
@@ -67,14 +67,14 @@ jobs:
            curl http://localhost:9080/myApp/api/resource/greeting
            gradle libertyStop
            gradle libertyPackage
-           docker build -t myApp:1.0-SNAPSHOT .
-           docker run -d --name myApp -p 9080:9080 myApp:1.0-SNAPSHOT
+           docker build -t my-app:1.0-SNAPSHOT .
+           docker run -d --name my-app -p 9080:9080 my-app:1.0-SNAPSHOT
            sleep 10
-           docker exec myApp cat /logs/messages.log | grep product
-           docker exec myApp cat /logs/messages.log | grep java
+           docker exec my-app cat /logs/messages.log | grep product
+           docker exec my-app cat /logs/messages.log | grep java
            curl http://localhost:9080/myApp/api/resource/greeting
-           docker stop myApp
-           docker rm myApp
+           docker stop my-app
+           docker rm my-app
            cd ..
     - name: Post tests
       if: always()
