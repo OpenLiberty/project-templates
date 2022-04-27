@@ -52,7 +52,7 @@ jobs:
            sleep 10
            docker exec my-app cat /logs/messages.log | grep product
            docker exec my-app cat /logs/messages.log | grep java
-           curl http://localhost:9080/myApp/api/resource/greeting
+           curl http://localhost:9080/api/resource/greeting
            docker stop my-app
            docker rm my-app
            cd ..
@@ -72,7 +72,7 @@ jobs:
            sleep 10
            docker exec my-app cat /logs/messages.log | grep product
            docker exec my-app cat /logs/messages.log | grep java
-           curl http://localhost:9080/myApp/api/resource/greeting
+           curl http://localhost:9080/api/resource/greeting
            docker stop my-app
            docker rm my-app
            cd ..
