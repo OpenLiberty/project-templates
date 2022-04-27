@@ -45,7 +45,7 @@ jobs:
            mvn -q clean package
            mvn -q liberty:create liberty:install-feature liberty:deploy
            mvn liberty:start
-           curl http://localhost:9080/myApp/api/resource/greeting
+           curl http://localhost:9080/api/resource/greeting
            mvn liberty:stop
            docker build -t my-app:1.0-SNAPSHOT .
            docker run -d --name my-app -p 9080:9080 my-app:1.0-SNAPSHOT
@@ -64,7 +64,7 @@ jobs:
            gradle tasks
            gradle clean
            gradle libertyStart
-           curl http://localhost:9080/myApp/api/resource/greeting
+           curl http://localhost:9080/api/resource/greeting
            gradle libertyStop
            gradle libertyPackage
            docker build -t my-app:1.0-SNAPSHOT .
