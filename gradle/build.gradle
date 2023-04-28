@@ -24,8 +24,8 @@ repositories {
 
 dependencies {
     // provided dependencies
-    providedCompile 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
-    providedCompile 'org.eclipse.microprofile:microprofile:5.0'
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:6.0'
 }
 
 clean.dependsOn 'libertyStop'
