@@ -1,21 +1,15 @@
-apply plugin: 'liberty'
-apply plugin: 'war'
+plugins {
+    id 'war'
+    id 'io.openliberty.tools.gradle.Liberty' version '3.5.2'
+}
+
+version '1.0-SNAPSHOT'
+group 'com.demo'
 
 sourceCompatibility = 11
 targetCompatibility = 11
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-// configure liberty-gradle-plugin 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.5.2'
-    }
 }
 
 repositories {
@@ -24,8 +18,9 @@ repositories {
 
 dependencies {
     // provided dependencies
-    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
-    providedCompile 'org.eclipse.microprofile:microprofile:6.0'
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0' 
+    providedCompile 'org.eclipse.microprofile:microprofile:6.0' 
+
 }
 
 clean.dependsOn 'libertyStop'
