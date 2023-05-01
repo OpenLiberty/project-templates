@@ -19,4 +19,5 @@ public class RestEndpointIT {
 
     @Test public void testGreeting() {
     }
+
 }
