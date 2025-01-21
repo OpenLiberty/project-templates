@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/maven"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 50
+- package-ecosystem: maven
+  directory: "/simple-rest-app"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 50
+- package-ecosystem: gradle
+  directory: "/gradle"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 50
+- package-ecosystem: gradle
+  directory: "/simple-rest-app"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 50
