@@ -1,6 +1,6 @@
 plugins {
     id 'war'
-    id 'io.openliberty.tools.gradle.Liberty' version '3.6.2'
+    id 'io.openliberty.tools.gradle.Liberty' version '3.9.2'
 }
 
 version '1.0-SNAPSHOT'
@@ -19,10 +19,10 @@ repositories {
 dependencies {
     // provided dependencies
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
-    providedCompile 'org.eclipse.microprofile:microprofile:6.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:6.1'
 
     // test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
 }
 
 ext {
