@@ -1,8 +1,10 @@
 <server description="Simple Microservice">
 
   <featureManager>
-    <feature>jakartaee-10.0</feature>
-    <feature>mpHealth-4.0</feature>
+    <platform>jakartaee-10.0</platform>
+    <platform>microprofile-7.0</platform>
+    <feature>jakartaee</feature>
+    <feature>mpHealth</feature>
   </featureManager>
 
   <variable name="default.http.port" defaultValue="9080"/>
