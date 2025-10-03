@@ -25,7 +25,7 @@ dependencies {
     providedCompile 'org.eclipse.microprofile:microprofile:7.0'
 
     // test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.14.0'
 }
 
 ext {
